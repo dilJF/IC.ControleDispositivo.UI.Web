@@ -1,0 +1,5 @@
+C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.Modelo\bin\Debug\IC.ControleDispositivo.Modelo.dll
+C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.Modelo\bin\Debug\IC.ControleDispositivo.Modelo.pdb
+C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.Modelo\obj\Debug\IC.ControleDispositivo.Modelo.csprojResolveAssemblyReference.cache
+C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.Modelo\obj\Debug\IC.ControleDispositivo.Modelo.dll
+C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.Modelo\obj\Debug\IC.ControleDispositivo.Modelo.pdb

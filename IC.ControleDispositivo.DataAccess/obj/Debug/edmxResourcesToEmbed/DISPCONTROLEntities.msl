@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DISPCONTROLModelStoreContainer" CdmEntityContainer="DISPCONTROLEntities">
+    <EntitySetMapping Name="TB_AGENCIA">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_AGENCIA">
+        <MappingFragment StoreEntitySet="TB_AGENCIA">
+          <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+          <ScalarProperty Name="NM_AGENCIA" ColumnName="NM_AGENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DISPOSITIVO">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_DISPOSITIVO">
+        <MappingFragment StoreEntitySet="TB_DISPOSITIVO">
+          <ScalarProperty Name="CODIGO_DISPOSITIVO" ColumnName="CODIGO_DISPOSITIVO" />
+          <ScalarProperty Name="CODIGO_FABRICANTE" ColumnName="CODIGO_FABRICANTE" />
+          <ScalarProperty Name="CODIGO_MODELO" ColumnName="CODIGO_MODELO" />
+          <ScalarProperty Name="CODIGO_FIRMWARE" ColumnName="CODIGO_FIRMWARE" />
+          <ScalarProperty Name="NR_IMEI" ColumnName="NR_IMEI" />
+          <ScalarProperty Name="CODIGO_SIMCARD_PRIMARIO" ColumnName="CODIGO_SIMCARD_PRIMARIO" />
+          <ScalarProperty Name="CODIGO_SIMCARD_SECUNDARIO" ColumnName="CODIGO_SIMCARD_SECUNDARIO" />
+          <ScalarProperty Name="CODIGO_SITUACAO" ColumnName="CODIGO_SITUACAO" />
+          <ScalarProperty Name="CODIGO_UNIDADE" ColumnName="CODIGO_UNIDADE" />
+          <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_FABRICANTE_DISPOSITIVO">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_FABRICANTE_DISPOSITIVO">
+        <MappingFragment StoreEntitySet="TB_FABRICANTE_DISPOSITIVO">
+          <ScalarProperty Name="CODIGO_FABRICANTE" ColumnName="CODIGO_FABRICANTE" />
+          <ScalarProperty Name="NM_FABRICANTE_DISPOSITIVO" ColumnName="NM_FABRICANTE_DISPOSITIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_FIRMWARE">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_FIRMWARE">
+        <MappingFragment StoreEntitySet="TB_FIRMWARE">
+          <ScalarProperty Name="CODIGO_FIRMWARE" ColumnName="CODIGO_FIRMWARE" />
+          <ScalarProperty Name="NM_FIRMWARE" ColumnName="NM_FIRMWARE" />
+          <ScalarProperty Name="DT_CRIACAO" ColumnName="DT_CRIACAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MODELO_DISPOSITIVO">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_MODELO_DISPOSITIVO">
+        <MappingFragment StoreEntitySet="TB_MODELO_DISPOSITIVO">
+          <ScalarProperty Name="CODIGO_MODELO" ColumnName="CODIGO_MODELO" />
+          <ScalarProperty Name="CODIGO_FABRICANTE_DISPOSITIVO" ColumnName="CODIGO_FABRICANTE_DISPOSITIVO" />
+          <ScalarProperty Name="NM_MODELO_DISPOSITIVO" ColumnName="NM_MODELO_DISPOSITIVO" />
+          <ScalarProperty Name="NR_SIMCARDS" ColumnName="NR_SIMCARDS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_OPERADORA">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_OPERADORA">
+        <MappingFragment StoreEntitySet="TB_OPERADORA">
+          <ScalarProperty Name="CODIGO_OPERADORA" ColumnName="CODIGO_OPERADORA" />
+          <ScalarProperty Name="NM_OPERADORA" ColumnName="NM_OPERADORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SIMCARD">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_SIMCARD">
+        <MappingFragment StoreEntitySet="TB_SIMCARD">
+          <ScalarProperty Name="CODIGO_SIMCARD" ColumnName="CODIGO_SIMCARD" />
+          <ScalarProperty Name="CODIGO_OPERADORA" ColumnName="CODIGO_OPERADORA" />
+          <ScalarProperty Name="NR_SIMCARD" ColumnName="NR_SIMCARD" />
+          <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+          <ScalarProperty Name="NR_CCID" ColumnName="NR_CCID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SITUACAO">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_SITUACAO">
+        <MappingFragment StoreEntitySet="TB_SITUACAO">
+          <ScalarProperty Name="CODIGO_SITUACAO" ColumnName="CODIGO_SITUACAO" />
+          <ScalarProperty Name="NM_SITUACAO" ColumnName="NM_SITUACAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_UNIDADE">
+      <EntityTypeMapping TypeName="DISPCONTROLModel.TB_UNIDADE">
+        <MappingFragment StoreEntitySet="TB_UNIDADE">
+          <ScalarProperty Name="CODIGO_UNIDADE" ColumnName="CODIGO_UNIDADE" />
+          <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+          <ScalarProperty Name="NM_UNIDADE" ColumnName="NM_UNIDADE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

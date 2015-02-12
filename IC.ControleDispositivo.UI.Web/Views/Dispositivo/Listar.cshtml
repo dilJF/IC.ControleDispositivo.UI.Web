@@ -1,0 +1,46 @@
+﻿@model List<IC.ControleDispositivo.Modelo.DispositivoMOD>
+@{
+    ViewBag.Title = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="padding: 5px">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fabricante</th>
+                <th>Modelo</th>
+                <th>Firmware</th>
+                <th>Imei</th>
+                <th>SimCard Primário</th>
+                <th>CCID</th>
+                <th>SimCard Secundário</th>
+                <th>CCID</th>
+                <th>Situação</th>
+                <th>Agência</th>
+                <th>Unidade</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dispositivo in Model)
+            {
+                <tr>
+                    <td>@dispositivo.Fabricante.NomeFabricante</td>
+                    <td>@dispositivo.Modelo.NomeModeloDispositivo</td>
+                    <td>@dispositivo.Firmware.NomeFirmware</td>
+                    <td>@dispositivo.NumeroImei</td>
+                    <td>@dispositivo.SimCardPrimario.NumeroSimCard</td>
+                    <td>@dispositivo.SimCardPrimario.NumeroCCID</td>
+                    <td>@dispositivo.SimCardSecundario.NumeroSimCard</td>
+                    <td>@dispositivo.SimCardSecundario.NumeroCCID</td>
+                    <td>@dispositivo.Situacao.NomeSituacao</td>
+                    <td>@dispositivo.Agencia.NomeAgencia</td>
+                    <td>@dispositivo.Unidade.NomeUnidade</td>
+                    <td><span class="glyphicon glyphicon-pencil"></span></td>
+                    <td><span class="glyphicon glyphicon-trash"></span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

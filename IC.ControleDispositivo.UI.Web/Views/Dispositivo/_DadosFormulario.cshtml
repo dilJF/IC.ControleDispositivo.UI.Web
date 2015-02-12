@@ -1,0 +1,91 @@
+﻿@model IC.ControleDispositivo.Modelo.DispositivoMOD
+@{
+    const string inputLabel = "col-lg-2 control-label";
+    const string input = "form-control";
+}
+<div class="form-group">
+    @Html.LabelFor(x => x.Agencia, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.Agencia.CodigoAgencia, ViewBag.Agencia as SelectList, "Selecione...", new { @class = input, OnChange="Carrega();" })
+        @Html.ValidationMessageFor(x => x.Agencia)
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.Unidade, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.Unidade.CodigoUnidade, ViewBag.Unidade as SelectList, "Selecione...", new { @class = input })
+        @Html.ValidationMessageFor(x => x.Unidade)
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.Fabricante, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.Fabricante.CodigoFabricante, ViewBag.Fabricante as SelectList, "Selecione...", new { @class = input })
+        @Html.ValidationMessageFor(x => x.Fabricante)
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.Modelo, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.Modelo.CodigoModeloDispositivo, ViewBag.ModeloDispositivo as SelectList, "Selecione...", new { @class = input })
+        @Html.ValidationMessageFor(x => x.Modelo)
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.Firmware, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.Firmware.CodigoFirmware, ViewBag.Firmware as SelectList, "Selecione...", new { @class = input })
+        @Html.ValidationMessageFor(x => x.Firmware)
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.NumeroImei, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.TextBoxFor(x => x.NumeroImei, new { @class = input, @placeholder = "Digite o Número do IMEI" })
+        @Html.ValidationMessageFor(x => x.NumeroImei)
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.SimCardPrimario, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.SimCardPrimario.CodigoSimCard, ViewBag.SimCard as SelectList, "Selecione...", new { @class = input })
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.SimCardSecundario, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.SimCardSecundario.CodigoSimCard, ViewBag.SimCard as SelectList, "Selecione...", new { @class = input })
+    </div>
+</div>
+<br />
+<div class="form-group">
+    @Html.LabelFor(x => x.Situacao, new { @class = inputLabel })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(x => x.Situacao.CodigoSituacao, ViewBag.Situacao as SelectList, "Selecione...", new { @class = input })
+        @Html.ValidationMessageFor(x => x.Situacao)
+    </div>
+</div>
+
+<script>
+
+    function Carrega() {
+        var codAgencia = $("#Agencia_CodigoAgencia option:selected").val();
+        $.ajax({
+            type: "POST",
+            url: @Url.Action("CarregarUnidadePelaAgencia", "Dispositivo"),
+            data: codAgencia,
+            success: function (data) {
+                $("#Unidade_CodigoUnidade").append(data);
+            },
+            
+            dataType: dataType
+        });
+    }
+</script>

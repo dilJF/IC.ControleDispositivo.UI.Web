@@ -1,0 +1,13 @@
+﻿@model IC.ControleDispositivo.Modelo.DispositivoMOD
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+@using (Html.BeginForm(new { @class = "form-horizontal" })) {
+        @Html.Partial("_DadosFormulario")
+    <input type="submit" name="cadastrar" id="cadastrar" value="Cadastrar" class="btn btn-success" />
+    <input type="reset" name="limpar" id="limpar" value="Limpar" class="btn btn-primary" />
+}
+
