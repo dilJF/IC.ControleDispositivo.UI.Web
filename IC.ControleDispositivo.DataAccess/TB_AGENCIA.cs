@@ -16,16 +16,16 @@ namespace IC.ControleDispositivo.DataAccess
     {
         public TB_AGENCIA()
         {
+            this.TB_UNIDADE = new HashSet<TB_UNIDADE>();
             this.TB_DISPOSITIVO = new HashSet<TB_DISPOSITIVO>();
             this.TB_SIMCARD = new HashSet<TB_SIMCARD>();
-            this.TB_UNIDADE = new HashSet<TB_UNIDADE>();
         }
     
         public int CODIGO_AGENCIA { get; set; }
         public string NM_AGENCIA { get; set; }
     
+        public virtual ICollection<TB_UNIDADE> TB_UNIDADE { get; set; }
         public virtual ICollection<TB_DISPOSITIVO> TB_DISPOSITIVO { get; set; }
         public virtual ICollection<TB_SIMCARD> TB_SIMCARD { get; set; }
-        public virtual ICollection<TB_UNIDADE> TB_UNIDADE { get; set; }
     }
 }

@@ -51,70 +51,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DISPCONTROLEntities.Context.cs">
+    <Compile Include="Dispositivo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DISPCONTROLEntities.Context.tt</DependentUpon>
+      <DependentUpon>Dispositivo.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DISPCONTROLEntities.cs">
+    <Compile Include="Dispositivo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
-    <Compile Include="DISPCONTROLEntities.Designer.cs">
+    <Compile Include="Dispositivo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DISPCONTROLEntities.edmx</DependentUpon>
+      <DependentUpon>Dispositivo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Dispositivo.tt</DependentUpon>
+    </Compile>
     <Compile Include="TB_AGENCIA.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_DISPOSITIVO.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_FABRICANTE_DISPOSITIVO.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_FIRMWARE.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_MODELO_DISPOSITIVO.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_OPERADORA.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_SIMCARD.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_SITUACAO.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
     <Compile Include="TB_UNIDADE.cs">
-      <DependentUpon>DISPCONTROLEntities.tt</DependentUpon>
+      <DependentUpon>Dispositivo.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config">
-      <SubType>Designer</SubType>
-    </None>
-    <EntityDeploy Include="DISPCONTROLEntities.edmx">
+    <EntityDeploy Include="Dispositivo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DISPCONTROLEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>Dispositivo.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DISPCONTROLEntities.Context.tt">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Dispositivo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DISPCONTROLEntities.edmx</DependentUpon>
-      <LastGenOutput>DISPCONTROLEntities.Context.cs</LastGenOutput>
+      <DependentUpon>Dispositivo.edmx</DependentUpon>
+      <LastGenOutput>Dispositivo.Context.cs</LastGenOutput>
     </None>
-    <None Include="DISPCONTROLEntities.edmx.diagram">
-      <DependentUpon>DISPCONTROLEntities.edmx</DependentUpon>
+    <None Include="Dispositivo.edmx.diagram">
+      <DependentUpon>Dispositivo.edmx</DependentUpon>
     </None>
-    <None Include="DISPCONTROLEntities.tt">
+    <None Include="Dispositivo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DISPCONTROLEntities.edmx</DependentUpon>
-      <LastGenOutput>DISPCONTROLEntities.cs</LastGenOutput>
+      <DependentUpon>Dispositivo.edmx</DependentUpon>
+      <LastGenOutput>Dispositivo.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

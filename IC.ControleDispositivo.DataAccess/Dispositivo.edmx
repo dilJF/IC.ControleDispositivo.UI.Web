@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DISPCONTROLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TB_AGENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_AGENCIA" />
+          </Key>
+          <Property Name="CODIGO_AGENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NM_AGENCIA" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_DISPOSITIVO">
+          <Key>
+            <PropertyRef Name="CODIGO_DISPOSITIVO" />
+          </Key>
+          <Property Name="CODIGO_DISPOSITIVO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO_FABRICANTE" Type="int" Nullable="false" />
+          <Property Name="CODIGO_MODELO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_FIRMWARE" Type="int" Nullable="false" />
+          <Property Name="NR_IMEI" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CODIGO_SIMCARD_PRIMARIO" Type="int" />
+          <Property Name="CODIGO_SIMCARD_SECUNDARIO" Type="int" />
+          <Property Name="CODIGO_SITUACAO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_UNIDADE" Type="int" Nullable="false" />
+          <Property Name="CODIGO_AGENCIA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_FABRICANTE_DISPOSITIVO">
+          <Key>
+            <PropertyRef Name="CODIGO_FABRICANTE" />
+          </Key>
+          <Property Name="CODIGO_FABRICANTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NM_FABRICANTE_DISPOSITIVO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_FIRMWARE">
+          <Key>
+            <PropertyRef Name="CODIGO_FIRMWARE" />
+          </Key>
+          <Property Name="CODIGO_FIRMWARE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NM_FIRMWARE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DT_CRIACAO" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_MODELO_DISPOSITIVO">
+          <Key>
+            <PropertyRef Name="CODIGO_MODELO" />
+          </Key>
+          <Property Name="CODIGO_MODELO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO_FABRICANTE_DISPOSITIVO" Type="int" Nullable="false" />
+          <Property Name="NM_MODELO_DISPOSITIVO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NR_SIMCARDS" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_OPERADORA">
+          <Key>
+            <PropertyRef Name="CODIGO_OPERADORA" />
+          </Key>
+          <Property Name="CODIGO_OPERADORA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NM_OPERADORA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_SIMCARD">
+          <Key>
+            <PropertyRef Name="CODIGO_SIMCARD" />
+          </Key>
+          <Property Name="CODIGO_SIMCARD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO_OPERADORA" Type="int" Nullable="false" />
+          <Property Name="NR_SIMCARD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CODIGO_AGENCIA" Type="int" Nullable="false" />
+          <Property Name="NR_CCID" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_SITUACAO">
+          <Key>
+            <PropertyRef Name="CODIGO_SITUACAO" />
+          </Key>
+          <Property Name="CODIGO_SITUACAO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NM_SITUACAO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_UNIDADE">
+          <Key>
+            <PropertyRef Name="CODIGO_UNIDADE" />
+          </Key>
+          <Property Name="CODIGO_UNIDADE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO_AGENCIA" Type="int" Nullable="false" />
+          <Property Name="NM_UNIDADE" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TB_DISPOSITIVO_TB_AGENCIA">
+          <End Role="TB_AGENCIA" Type="Self.TB_AGENCIA" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_AGENCIA">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+          <End Role="TB_FABRICANTE_DISPOSITIVO" Type="Self.TB_FABRICANTE_DISPOSITIVO" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FABRICANTE_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_FIRMWARE">
+          <End Role="TB_FIRMWARE" Type="Self.TB_FIRMWARE" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FIRMWARE">
+              <PropertyRef Name="CODIGO_FIRMWARE" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FIRMWARE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO">
+          <End Role="TB_MODELO_DISPOSITIVO" Type="Self.TB_MODELO_DISPOSITIVO" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_MODELO_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_MODELO" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_MODELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_SIMCARD">
+          <End Role="TB_SIMCARD" Type="Self.TB_SIMCARD" Multiplicity="0..1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_SIMCARD" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_SIMCARD_PRIMARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_SIMCARD2">
+          <End Role="TB_SIMCARD" Type="Self.TB_SIMCARD" Multiplicity="0..1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_SIMCARD" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_SIMCARD_SECUNDARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_SITUACAO">
+          <End Role="TB_SITUACAO" Type="Self.TB_SITUACAO" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SITUACAO">
+              <PropertyRef Name="CODIGO_SITUACAO" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_SITUACAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_UNIDADE">
+          <End Role="TB_UNIDADE" Type="Self.TB_UNIDADE" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UNIDADE">
+              <PropertyRef Name="CODIGO_UNIDADE" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_UNIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+          <End Role="TB_FABRICANTE_DISPOSITIVO" Type="Self.TB_FABRICANTE_DISPOSITIVO" Multiplicity="1" />
+          <End Role="TB_MODELO_DISPOSITIVO" Type="Self.TB_MODELO_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FABRICANTE_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE" />
+            </Principal>
+            <Dependent Role="TB_MODELO_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE_DISPOSITIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_SIMCARD_TB_AGENCIA">
+          <End Role="TB_AGENCIA" Type="Self.TB_AGENCIA" Multiplicity="1" />
+          <End Role="TB_SIMCARD" Type="Self.TB_SIMCARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_AGENCIA">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Principal>
+            <Dependent Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_SIMCARD_TB_OPERADORA">
+          <End Role="TB_OPERADORA" Type="Self.TB_OPERADORA" Multiplicity="1" />
+          <End Role="TB_SIMCARD" Type="Self.TB_SIMCARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_OPERADORA">
+              <PropertyRef Name="CODIGO_OPERADORA" />
+            </Principal>
+            <Dependent Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_OPERADORA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_UNIDADE_TB_AGENCIA">
+          <End Role="TB_AGENCIA" Type="Self.TB_AGENCIA" Multiplicity="1" />
+          <End Role="TB_UNIDADE" Type="Self.TB_UNIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_AGENCIA">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Principal>
+            <Dependent Role="TB_UNIDADE">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DISPCONTROLModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_AGENCIA" EntityType="Self.TB_AGENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_DISPOSITIVO" EntityType="Self.TB_DISPOSITIVO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_FABRICANTE_DISPOSITIVO" EntityType="Self.TB_FABRICANTE_DISPOSITIVO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_FIRMWARE" EntityType="Self.TB_FIRMWARE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_MODELO_DISPOSITIVO" EntityType="Self.TB_MODELO_DISPOSITIVO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_OPERADORA" EntityType="Self.TB_OPERADORA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_SIMCARD" EntityType="Self.TB_SIMCARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_SITUACAO" EntityType="Self.TB_SITUACAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_UNIDADE" EntityType="Self.TB_UNIDADE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_AGENCIA" Association="Self.FK_TB_DISPOSITIVO_TB_AGENCIA">
+            <End Role="TB_AGENCIA" EntitySet="TB_AGENCIA" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" Association="Self.FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+            <End Role="TB_FABRICANTE_DISPOSITIVO" EntitySet="TB_FABRICANTE_DISPOSITIVO" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_FIRMWARE" Association="Self.FK_TB_DISPOSITIVO_TB_FIRMWARE">
+            <End Role="TB_FIRMWARE" EntitySet="TB_FIRMWARE" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO" Association="Self.FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO">
+            <End Role="TB_MODELO_DISPOSITIVO" EntitySet="TB_MODELO_DISPOSITIVO" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_SIMCARD" Association="Self.FK_TB_DISPOSITIVO_TB_SIMCARD">
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_SIMCARD2" Association="Self.FK_TB_DISPOSITIVO_TB_SIMCARD2">
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_SITUACAO" Association="Self.FK_TB_DISPOSITIVO_TB_SITUACAO">
+            <End Role="TB_SITUACAO" EntitySet="TB_SITUACAO" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_UNIDADE" Association="Self.FK_TB_DISPOSITIVO_TB_UNIDADE">
+            <End Role="TB_UNIDADE" EntitySet="TB_UNIDADE" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" Association="Self.FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+            <End Role="TB_FABRICANTE_DISPOSITIVO" EntitySet="TB_FABRICANTE_DISPOSITIVO" />
+            <End Role="TB_MODELO_DISPOSITIVO" EntitySet="TB_MODELO_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_SIMCARD_TB_AGENCIA" Association="Self.FK_TB_SIMCARD_TB_AGENCIA">
+            <End Role="TB_AGENCIA" EntitySet="TB_AGENCIA" />
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_SIMCARD_TB_OPERADORA" Association="Self.FK_TB_SIMCARD_TB_OPERADORA">
+            <End Role="TB_OPERADORA" EntitySet="TB_OPERADORA" />
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_UNIDADE_TB_AGENCIA" Association="Self.FK_TB_UNIDADE_TB_AGENCIA">
+            <End Role="TB_AGENCIA" EntitySet="TB_AGENCIA" />
+            <End Role="TB_UNIDADE" EntitySet="TB_UNIDADE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DISPCONTROLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB_AGENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_AGENCIA" />
+          </Key>
+          <Property Name="CODIGO_AGENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NM_AGENCIA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_UNIDADE" Relationship="Self.FK_TB_UNIDADE_TB_AGENCIA" FromRole="TB_AGENCIA" ToRole="TB_UNIDADE" />
+          <NavigationProperty Name="TB_DISPOSITIVO" Relationship="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_AGENCIA" FromRole="TB_AGENCIA" ToRole="TB_DISPOSITIVO" />
+          <NavigationProperty Name="TB_SIMCARD" Relationship="DISPCONTROLModel.FK_TB_SIMCARD_TB_AGENCIA" FromRole="TB_AGENCIA" ToRole="TB_SIMCARD" />
+        </EntityType>
+        <EntityType Name="TB_DISPOSITIVO">
+          <Key>
+            <PropertyRef Name="CODIGO_DISPOSITIVO" />
+          </Key>
+          <Property Name="CODIGO_DISPOSITIVO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO_FABRICANTE" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_MODELO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_FIRMWARE" Type="Int32" Nullable="false" />
+          <Property Name="NR_IMEI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODIGO_SIMCARD_PRIMARIO" Type="Int32" />
+          <Property Name="CODIGO_SIMCARD_SECUNDARIO" Type="Int32" />
+          <Property Name="CODIGO_SITUACAO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_UNIDADE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_FABRICANTE_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" FromRole="TB_DISPOSITIVO" ToRole="TB_FABRICANTE_DISPOSITIVO" />
+          <NavigationProperty Name="TB_FIRMWARE" Relationship="Self.FK_TB_DISPOSITIVO_TB_FIRMWARE" FromRole="TB_DISPOSITIVO" ToRole="TB_FIRMWARE" />
+          <NavigationProperty Name="TB_MODELO_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO" FromRole="TB_DISPOSITIVO" ToRole="TB_MODELO_DISPOSITIVO" />
+          <NavigationProperty Name="TB_SIMCARD" Relationship="Self.FK_TB_DISPOSITIVO_TB_SIMCARD" FromRole="TB_DISPOSITIVO" ToRole="TB_SIMCARD" />
+          <NavigationProperty Name="TB_SIMCARD1" Relationship="Self.FK_TB_DISPOSITIVO_TB_SIMCARD2" FromRole="TB_DISPOSITIVO" ToRole="TB_SIMCARD" />
+          <NavigationProperty Name="TB_SITUACAO" Relationship="Self.FK_TB_DISPOSITIVO_TB_SITUACAO" FromRole="TB_DISPOSITIVO" ToRole="TB_SITUACAO" />
+          <NavigationProperty Name="TB_UNIDADE" Relationship="Self.FK_TB_DISPOSITIVO_TB_UNIDADE" FromRole="TB_DISPOSITIVO" ToRole="TB_UNIDADE" />
+          <Property Name="CODIGO_AGENCIA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_AGENCIA" Relationship="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_AGENCIA" FromRole="TB_DISPOSITIVO" ToRole="TB_AGENCIA" />
+        </EntityType>
+        <EntityType Name="TB_FABRICANTE_DISPOSITIVO">
+          <Key>
+            <PropertyRef Name="CODIGO_FABRICANTE" />
+          </Key>
+          <Property Name="CODIGO_FABRICANTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NM_FABRICANTE_DISPOSITIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" FromRole="TB_FABRICANTE_DISPOSITIVO" ToRole="TB_DISPOSITIVO" />
+          <NavigationProperty Name="TB_MODELO_DISPOSITIVO" Relationship="Self.FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" FromRole="TB_FABRICANTE_DISPOSITIVO" ToRole="TB_MODELO_DISPOSITIVO" />
+        </EntityType>
+        <EntityType Name="TB_FIRMWARE">
+          <Key>
+            <PropertyRef Name="CODIGO_FIRMWARE" />
+          </Key>
+          <Property Name="CODIGO_FIRMWARE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NM_FIRMWARE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DT_CRIACAO" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TB_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_FIRMWARE" FromRole="TB_FIRMWARE" ToRole="TB_DISPOSITIVO" />
+        </EntityType>
+        <EntityType Name="TB_MODELO_DISPOSITIVO">
+          <Key>
+            <PropertyRef Name="CODIGO_MODELO" />
+          </Key>
+          <Property Name="CODIGO_MODELO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO_FABRICANTE_DISPOSITIVO" Type="Int32" Nullable="false" />
+          <Property Name="NM_MODELO_DISPOSITIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NR_SIMCARDS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO" FromRole="TB_MODELO_DISPOSITIVO" ToRole="TB_DISPOSITIVO" />
+          <NavigationProperty Name="TB_FABRICANTE_DISPOSITIVO" Relationship="Self.FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" FromRole="TB_MODELO_DISPOSITIVO" ToRole="TB_FABRICANTE_DISPOSITIVO" />
+        </EntityType>
+        <EntityType Name="TB_OPERADORA">
+          <Key>
+            <PropertyRef Name="CODIGO_OPERADORA" />
+          </Key>
+          <Property Name="CODIGO_OPERADORA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NM_OPERADORA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_SIMCARD" Relationship="Self.FK_TB_SIMCARD_TB_OPERADORA" FromRole="TB_OPERADORA" ToRole="TB_SIMCARD" />
+        </EntityType>
+        <EntityType Name="TB_SIMCARD">
+          <Key>
+            <PropertyRef Name="CODIGO_SIMCARD" />
+          </Key>
+          <Property Name="CODIGO_SIMCARD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO_OPERADORA" Type="Int32" Nullable="false" />
+          <Property Name="NR_SIMCARD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_SIMCARD" FromRole="TB_SIMCARD" ToRole="TB_DISPOSITIVO" />
+          <NavigationProperty Name="TB_DISPOSITIVO1" Relationship="Self.FK_TB_DISPOSITIVO_TB_SIMCARD2" FromRole="TB_SIMCARD" ToRole="TB_DISPOSITIVO" />
+          <NavigationProperty Name="TB_OPERADORA" Relationship="Self.FK_TB_SIMCARD_TB_OPERADORA" FromRole="TB_SIMCARD" ToRole="TB_OPERADORA" />
+          <Property Name="CODIGO_AGENCIA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_AGENCIA" Relationship="DISPCONTROLModel.FK_TB_SIMCARD_TB_AGENCIA" FromRole="TB_SIMCARD" ToRole="TB_AGENCIA" />
+          <Property Name="NR_CCID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_SITUACAO">
+          <Key>
+            <PropertyRef Name="CODIGO_SITUACAO" />
+          </Key>
+          <Property Name="CODIGO_SITUACAO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NM_SITUACAO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_SITUACAO" FromRole="TB_SITUACAO" ToRole="TB_DISPOSITIVO" />
+        </EntityType>
+        <EntityType Name="TB_UNIDADE">
+          <Key>
+            <PropertyRef Name="CODIGO_UNIDADE" />
+          </Key>
+          <Property Name="CODIGO_UNIDADE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO_AGENCIA" Type="Int32" Nullable="false" />
+          <Property Name="NM_UNIDADE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_AGENCIA" Relationship="Self.FK_TB_UNIDADE_TB_AGENCIA" FromRole="TB_UNIDADE" ToRole="TB_AGENCIA" />
+          <NavigationProperty Name="TB_DISPOSITIVO" Relationship="Self.FK_TB_DISPOSITIVO_TB_UNIDADE" FromRole="TB_UNIDADE" ToRole="TB_DISPOSITIVO" />
+        </EntityType>
+        <Association Name="FK_TB_UNIDADE_TB_AGENCIA">
+          <End Role="TB_AGENCIA" Type="Self.TB_AGENCIA" Multiplicity="1" />
+          <End Role="TB_UNIDADE" Type="Self.TB_UNIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_AGENCIA">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Principal>
+            <Dependent Role="TB_UNIDADE">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+          <End Role="TB_FABRICANTE_DISPOSITIVO" Type="Self.TB_FABRICANTE_DISPOSITIVO" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FABRICANTE_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_FIRMWARE">
+          <End Role="TB_FIRMWARE" Type="Self.TB_FIRMWARE" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FIRMWARE">
+              <PropertyRef Name="CODIGO_FIRMWARE" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FIRMWARE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO">
+          <End Role="TB_MODELO_DISPOSITIVO" Type="Self.TB_MODELO_DISPOSITIVO" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_MODELO_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_MODELO" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_MODELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_SIMCARD">
+          <End Role="TB_SIMCARD" Type="Self.TB_SIMCARD" Multiplicity="0..1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_SIMCARD" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_SIMCARD_PRIMARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_SIMCARD2">
+          <End Role="TB_SIMCARD" Type="Self.TB_SIMCARD" Multiplicity="0..1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_SIMCARD" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_SIMCARD_SECUNDARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_SITUACAO">
+          <End Role="TB_SITUACAO" Type="Self.TB_SITUACAO" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SITUACAO">
+              <PropertyRef Name="CODIGO_SITUACAO" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_SITUACAO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_DISPOSITIVO_TB_UNIDADE">
+          <End Role="TB_UNIDADE" Type="Self.TB_UNIDADE" Multiplicity="1" />
+          <End Role="TB_DISPOSITIVO" Type="Self.TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UNIDADE">
+              <PropertyRef Name="CODIGO_UNIDADE" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_UNIDADE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+          <End Role="TB_FABRICANTE_DISPOSITIVO" Type="Self.TB_FABRICANTE_DISPOSITIVO" Multiplicity="1" />
+          <End Role="TB_MODELO_DISPOSITIVO" Type="Self.TB_MODELO_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FABRICANTE_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE" />
+            </Principal>
+            <Dependent Role="TB_MODELO_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_FABRICANTE_DISPOSITIVO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_SIMCARD_TB_OPERADORA">
+          <End Role="TB_OPERADORA" Type="Self.TB_OPERADORA" Multiplicity="1" />
+          <End Role="TB_SIMCARD" Type="Self.TB_SIMCARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_OPERADORA">
+              <PropertyRef Name="CODIGO_OPERADORA" />
+            </Principal>
+            <Dependent Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_OPERADORA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DISPCONTROLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TB_AGENCIA" EntityType="Self.TB_AGENCIA" />
+          <EntitySet Name="TB_DISPOSITIVO" EntityType="Self.TB_DISPOSITIVO" />
+          <EntitySet Name="TB_FABRICANTE_DISPOSITIVO" EntityType="Self.TB_FABRICANTE_DISPOSITIVO" />
+          <EntitySet Name="TB_FIRMWARE" EntityType="Self.TB_FIRMWARE" />
+          <EntitySet Name="TB_MODELO_DISPOSITIVO" EntityType="Self.TB_MODELO_DISPOSITIVO" />
+          <EntitySet Name="TB_OPERADORA" EntityType="Self.TB_OPERADORA" />
+          <EntitySet Name="TB_SIMCARD" EntityType="Self.TB_SIMCARD" />
+          <EntitySet Name="TB_SITUACAO" EntityType="Self.TB_SITUACAO" />
+          <EntitySet Name="TB_UNIDADE" EntityType="Self.TB_UNIDADE" />
+          <AssociationSet Name="FK_TB_UNIDADE_TB_AGENCIA" Association="Self.FK_TB_UNIDADE_TB_AGENCIA">
+            <End Role="TB_AGENCIA" EntitySet="TB_AGENCIA" />
+            <End Role="TB_UNIDADE" EntitySet="TB_UNIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" Association="Self.FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+            <End Role="TB_FABRICANTE_DISPOSITIVO" EntitySet="TB_FABRICANTE_DISPOSITIVO" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_FIRMWARE" Association="Self.FK_TB_DISPOSITIVO_TB_FIRMWARE">
+            <End Role="TB_FIRMWARE" EntitySet="TB_FIRMWARE" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO" Association="Self.FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO">
+            <End Role="TB_MODELO_DISPOSITIVO" EntitySet="TB_MODELO_DISPOSITIVO" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_SIMCARD" Association="Self.FK_TB_DISPOSITIVO_TB_SIMCARD">
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_SIMCARD2" Association="Self.FK_TB_DISPOSITIVO_TB_SIMCARD2">
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_SITUACAO" Association="Self.FK_TB_DISPOSITIVO_TB_SITUACAO">
+            <End Role="TB_SITUACAO" EntitySet="TB_SITUACAO" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_UNIDADE" Association="Self.FK_TB_DISPOSITIVO_TB_UNIDADE">
+            <End Role="TB_UNIDADE" EntitySet="TB_UNIDADE" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" Association="Self.FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO">
+            <End Role="TB_FABRICANTE_DISPOSITIVO" EntitySet="TB_FABRICANTE_DISPOSITIVO" />
+            <End Role="TB_MODELO_DISPOSITIVO" EntitySet="TB_MODELO_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_SIMCARD_TB_OPERADORA" Association="Self.FK_TB_SIMCARD_TB_OPERADORA">
+            <End Role="TB_OPERADORA" EntitySet="TB_OPERADORA" />
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_DISPOSITIVO_TB_AGENCIA" Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_AGENCIA">
+            <End Role="TB_AGENCIA" EntitySet="TB_AGENCIA" />
+            <End Role="TB_DISPOSITIVO" EntitySet="TB_DISPOSITIVO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_SIMCARD_TB_AGENCIA" Association="DISPCONTROLModel.FK_TB_SIMCARD_TB_AGENCIA">
+            <End Role="TB_AGENCIA" EntitySet="TB_AGENCIA" />
+            <End Role="TB_SIMCARD" EntitySet="TB_SIMCARD" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_TB_DISPOSITIVO_TB_AGENCIA">
+          <End Type="DISPCONTROLModel.TB_AGENCIA" Role="TB_AGENCIA" Multiplicity="1" />
+          <End Type="DISPCONTROLModel.TB_DISPOSITIVO" Role="TB_DISPOSITIVO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_AGENCIA">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Principal>
+            <Dependent Role="TB_DISPOSITIVO">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_SIMCARD_TB_AGENCIA">
+          <End Type="DISPCONTROLModel.TB_AGENCIA" Role="TB_AGENCIA" Multiplicity="1" />
+          <End Type="DISPCONTROLModel.TB_SIMCARD" Role="TB_SIMCARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_AGENCIA">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Principal>
+            <Dependent Role="TB_SIMCARD">
+              <PropertyRef Name="CODIGO_AGENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DISPCONTROLModelStoreContainer" CdmEntityContainer="DISPCONTROLEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_AGENCIA">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_AGENCIA">
+              <MappingFragment StoreEntitySet="TB_AGENCIA">
+                <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+                <ScalarProperty Name="NM_AGENCIA" ColumnName="NM_AGENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_DISPOSITIVO">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_DISPOSITIVO">
+              <MappingFragment StoreEntitySet="TB_DISPOSITIVO">
+                <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+                <ScalarProperty Name="CODIGO_DISPOSITIVO" ColumnName="CODIGO_DISPOSITIVO" />
+                <ScalarProperty Name="CODIGO_FABRICANTE" ColumnName="CODIGO_FABRICANTE" />
+                <ScalarProperty Name="CODIGO_MODELO" ColumnName="CODIGO_MODELO" />
+                <ScalarProperty Name="CODIGO_FIRMWARE" ColumnName="CODIGO_FIRMWARE" />
+                <ScalarProperty Name="NR_IMEI" ColumnName="NR_IMEI" />
+                <ScalarProperty Name="CODIGO_SIMCARD_PRIMARIO" ColumnName="CODIGO_SIMCARD_PRIMARIO" />
+                <ScalarProperty Name="CODIGO_SIMCARD_SECUNDARIO" ColumnName="CODIGO_SIMCARD_SECUNDARIO" />
+                <ScalarProperty Name="CODIGO_SITUACAO" ColumnName="CODIGO_SITUACAO" />
+                <ScalarProperty Name="CODIGO_UNIDADE" ColumnName="CODIGO_UNIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_FABRICANTE_DISPOSITIVO">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_FABRICANTE_DISPOSITIVO">
+              <MappingFragment StoreEntitySet="TB_FABRICANTE_DISPOSITIVO">
+                <ScalarProperty Name="CODIGO_FABRICANTE" ColumnName="CODIGO_FABRICANTE" />
+                <ScalarProperty Name="NM_FABRICANTE_DISPOSITIVO" ColumnName="NM_FABRICANTE_DISPOSITIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_FIRMWARE">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_FIRMWARE">
+              <MappingFragment StoreEntitySet="TB_FIRMWARE">
+                <ScalarProperty Name="CODIGO_FIRMWARE" ColumnName="CODIGO_FIRMWARE" />
+                <ScalarProperty Name="NM_FIRMWARE" ColumnName="NM_FIRMWARE" />
+                <ScalarProperty Name="DT_CRIACAO" ColumnName="DT_CRIACAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_MODELO_DISPOSITIVO">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_MODELO_DISPOSITIVO">
+              <MappingFragment StoreEntitySet="TB_MODELO_DISPOSITIVO">
+                <ScalarProperty Name="CODIGO_MODELO" ColumnName="CODIGO_MODELO" />
+                <ScalarProperty Name="CODIGO_FABRICANTE_DISPOSITIVO" ColumnName="CODIGO_FABRICANTE_DISPOSITIVO" />
+                <ScalarProperty Name="NM_MODELO_DISPOSITIVO" ColumnName="NM_MODELO_DISPOSITIVO" />
+                <ScalarProperty Name="NR_SIMCARDS" ColumnName="NR_SIMCARDS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_OPERADORA">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_OPERADORA">
+              <MappingFragment StoreEntitySet="TB_OPERADORA">
+                <ScalarProperty Name="CODIGO_OPERADORA" ColumnName="CODIGO_OPERADORA" />
+                <ScalarProperty Name="NM_OPERADORA" ColumnName="NM_OPERADORA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SIMCARD">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_SIMCARD">
+              <MappingFragment StoreEntitySet="TB_SIMCARD">
+                <ScalarProperty Name="NR_CCID" ColumnName="NR_CCID" />
+                <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+                <ScalarProperty Name="CODIGO_SIMCARD" ColumnName="CODIGO_SIMCARD" />
+                <ScalarProperty Name="CODIGO_OPERADORA" ColumnName="CODIGO_OPERADORA" />
+                <ScalarProperty Name="NR_SIMCARD" ColumnName="NR_SIMCARD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SITUACAO">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_SITUACAO">
+              <MappingFragment StoreEntitySet="TB_SITUACAO">
+                <ScalarProperty Name="CODIGO_SITUACAO" ColumnName="CODIGO_SITUACAO" />
+                <ScalarProperty Name="NM_SITUACAO" ColumnName="NM_SITUACAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_UNIDADE">
+            <EntityTypeMapping TypeName="DISPCONTROLModel.TB_UNIDADE">
+              <MappingFragment StoreEntitySet="TB_UNIDADE">
+                <ScalarProperty Name="CODIGO_UNIDADE" ColumnName="CODIGO_UNIDADE" />
+                <ScalarProperty Name="CODIGO_AGENCIA" ColumnName="CODIGO_AGENCIA" />
+                <ScalarProperty Name="NM_UNIDADE" ColumnName="NM_UNIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

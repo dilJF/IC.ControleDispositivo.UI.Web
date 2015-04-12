@@ -26,9 +26,9 @@ namespace IC.ControleDispositivo.DataAccess
         public int CODIGO_AGENCIA { get; set; }
         public string NR_CCID { get; set; }
     
-        public virtual TB_AGENCIA TB_AGENCIA { get; set; }
         public virtual ICollection<TB_DISPOSITIVO> TB_DISPOSITIVO { get; set; }
         public virtual ICollection<TB_DISPOSITIVO> TB_DISPOSITIVO1 { get; set; }
         public virtual TB_OPERADORA TB_OPERADORA { get; set; }
+        public virtual TB_AGENCIA TB_AGENCIA { get; set; }
     }
 }

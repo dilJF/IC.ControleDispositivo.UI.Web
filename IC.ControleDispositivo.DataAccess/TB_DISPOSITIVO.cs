@@ -25,7 +25,6 @@ namespace IC.ControleDispositivo.DataAccess
         public int CODIGO_UNIDADE { get; set; }
         public int CODIGO_AGENCIA { get; set; }
     
-        public virtual TB_AGENCIA TB_AGENCIA { get; set; }
         public virtual TB_FABRICANTE_DISPOSITIVO TB_FABRICANTE_DISPOSITIVO { get; set; }
         public virtual TB_FIRMWARE TB_FIRMWARE { get; set; }
         public virtual TB_MODELO_DISPOSITIVO TB_MODELO_DISPOSITIVO { get; set; }
@@ -33,5 +32,6 @@ namespace IC.ControleDispositivo.DataAccess
         public virtual TB_SIMCARD TB_SIMCARD1 { get; set; }
         public virtual TB_SITUACAO TB_SITUACAO { get; set; }
         public virtual TB_UNIDADE TB_UNIDADE { get; set; }
+        public virtual TB_AGENCIA TB_AGENCIA { get; set; }
     }
 }

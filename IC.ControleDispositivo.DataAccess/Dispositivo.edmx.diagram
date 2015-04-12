@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="408a1df6f83f4601b0e99b02df7a1916" Name="Diagram1">
+        <EntityTypeShape EntityType="DISPCONTROLModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_AGENCIA" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_DISPOSITIVO" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_FABRICANTE_DISPOSITIVO" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_FIRMWARE" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_MODELO_DISPOSITIVO" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_OPERADORA" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_SIMCARD" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_SITUACAO" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DISPCONTROLModel.TB_UNIDADE" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_UNIDADE_TB_AGENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_FIRMWARE" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_MODELO_DISPOSITIVO" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_SIMCARD" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_SIMCARD2" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_SITUACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_UNIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_MODELO_DISPOSITIVO_TB_FABRICANTE_DISPOSITIVO" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_SIMCARD_TB_OPERADORA" ManuallyRouted="false" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_DISPOSITIVO_TB_AGENCIA" />
+        <AssociationConnector Association="DISPCONTROLModel.FK_TB_SIMCARD_TB_AGENCIA" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

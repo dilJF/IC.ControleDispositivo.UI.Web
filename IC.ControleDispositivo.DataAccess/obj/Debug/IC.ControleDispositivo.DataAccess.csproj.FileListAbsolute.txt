@@ -8,13 +8,3 @@ C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI
 C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\obj\Debug\IC.ControleDispositivo.DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\obj\Debug\IC.ControleDispositivo.DataAccess.dll
 C:\Users\Adilson\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\obj\Debug\IC.ControleDispositivo.DataAccess.pdb
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\bin\Debug\IC.ControleDispositivo.DataAccess.dll.config
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\bin\Debug\IC.ControleDispositivo.DataAccess.dll
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\bin\Debug\IC.ControleDispositivo.DataAccess.pdb
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\bin\Debug\EntityFramework.dll
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\bin\Debug\EntityFramework.xml
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\obj\Debug\IC.ControleDispositivo.DataAccess.csprojResolveAssemblyReference.cache
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\obj\Debug\IC.ControleDispositivo.DataAccess.dll
-C:\Users\adilson.ICCONSULTING\Documents\Visual Studio 2013\Projects\IC.ControleDispositivo.UI.Web\IC.ControleDispositivo.DataAccess\obj\Debug\IC.ControleDispositivo.DataAccess.pdb
